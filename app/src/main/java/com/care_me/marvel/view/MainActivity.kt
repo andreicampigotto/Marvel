@@ -10,7 +10,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding: MainActivityBinding
+    private lateinit var binding: MainActivityBinding
 
     fun replaceFrag(fragment: Fragment) {
         supportFragmentManager.beginTransaction()
@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(binding.root)
 
-        //replaceFrag()
+        replaceFrag(HeroesFragment())
     }
 
     override fun onBackPressed() {}

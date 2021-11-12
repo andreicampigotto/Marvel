@@ -30,7 +30,7 @@ class MarvelRepository @Inject constructor(
     }
 
     private suspend fun getFilteredFromDatabase(query: String): List<Hero>? {
-        return dao.getFiltred(query)
+        return dao.getFiltered(query)
     }
 
     suspend fun fetchHeroes(offset: Int, checkInternet: Boolean): List<Hero>? {

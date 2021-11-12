@@ -1,5 +1,3 @@
-import java.security.PublicKey
-
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
@@ -60,8 +58,7 @@ dependencies {
 
 
 //Lottie
-    def lottieVersion = '4.2.0'
-    implementation "com.airbnb.android:lottie:$lottieVersion"
+    implementation "com.airbnb.android:lottie:4.2.0"
 
 // LIFECYCLE
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
@@ -94,21 +91,20 @@ dependencies {
     kapt "androidx.room:room-compiler:2.3.0"
 
 
-// TESTING - UNIT
-    testImplementation 'com.google.truth:truth:1.1.3'
-    testImplementation 'org.mockito:mockito-core:4.0.0'
-    testImplementation 'com.squareup.retrofit2:retrofit-mock:2.9.0'
-    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2-native-mt'
-    testImplementation "androidx.arch.core:core-testing:2.1.0"
-    testImplementation('org.mockito:mockito-inline:4.0.0')
-
-
 // TESTING - ANDROID TEST
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation 'com.google.truth:truth:1.1.3'
-
-    testImplementation 'junit:junit:4.+'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+
+    // TESTING - UNIT
+    testImplementation 'junit:junit:4.+'
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'com.google.truth:truth:1.1.3'
+    testImplementation 'org.mockito:mockito-core:4.0.0'
+    testImplementation 'com.squareup.retrofit2:retrofit-mock:2.9.0'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.5.2'
+    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.5.2'
+    testImplementation "androidx.arch.core:core-testing:2.1.0"
+    testImplementation('org.mockito:mockito-inline:4.0.0')
 }

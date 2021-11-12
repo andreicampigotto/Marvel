@@ -20,7 +20,7 @@ object HiltModule {
     @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://gateway.marvel.com")
+            .baseUrl("http://gateway.marvel.com")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

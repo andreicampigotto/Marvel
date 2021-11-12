@@ -15,7 +15,7 @@ interface HeroesDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insert(list: List<Hero>)
 
-    @Query("SELECT * FROM Hero WHERE name LIKE 'like' || :query || '%'")
-    suspend fun getFiltred(query: String): List<Hero>?
+    @Query("SELECT * FROM Hero WHERE name LIKE '%' || :query || '%'")
+    suspend fun getFiltered(query: String): List<Hero>?
 
 }

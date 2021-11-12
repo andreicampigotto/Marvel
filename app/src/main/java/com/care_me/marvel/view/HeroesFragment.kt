@@ -27,21 +27,21 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class HeroesFragment : Fragment(R.layout.heroes_fragment) {
 
-    lateinit var viewModel: HeroesViewModel
-    lateinit var binding: HeroesFragmentBinding
-    val heroesAdapter = HeroesAdapter() {
+    private lateinit var viewModel: HeroesViewModel
+    private lateinit var binding: HeroesFragmentBinding
+    private val heroesAdapter = HeroesAdapter() {
         (requireActivity() as MainActivity).replaceFrag(HeroDetailFragment(it))
     }
 
-    val aboveAdapter = AboveAdapter() {
+    private val aboveAdapter = AboveAdapter() {
         (requireActivity() as MainActivity).replaceFrag(HeroDetailFragment(it))
     }
 
-    val observerHero = Observer<List<Hero>> { heroesAdapter.update(it.toMutableList()) }
-    val observerClearHero = Observer<List<Hero>> { heroesAdapter.clearList(it.toMutableList()) }
+    private val observerHero = Observer<List<Hero>> { heroesAdapter.update(it.toMutableList()) }
+    private val observerClearHero = Observer<List<Hero>> { heroesAdapter.clearList(it.toMutableList()) }
 
-    val observerAbove = Observer<List<Hero>> { aboveAdapter.update(it.subList(0, 5)) }
-    val observerOffset = Observer<Int> {
+    private val observerAbove = Observer<List<Hero>> { aboveAdapter.update(it.subList(0, 5)) }
+    private val observerOffset = Observer<Int> {
         viewModel.fetchHeroes(offset = it, (requireActivity() as MainActivity).checkConnection())
     }
 
@@ -63,7 +63,7 @@ class HeroesFragment : Fragment(R.layout.heroes_fragment) {
         searchHero()
     }
 
-    fun setupRecyclerView() = with(binding.heroesRecyclerView) {
+    private fun setupRecyclerView() = with(binding.heroesRecyclerView) {
         adapter = heroesAdapter
         layoutManager = GridLayoutManager(requireContext(), 2)
         addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -77,7 +77,7 @@ class HeroesFragment : Fragment(R.layout.heroes_fragment) {
         })
     }
 
-    fun setupRecyclerViewTop() = with(binding.recyclerViewTopHeroes) {
+    private fun setupRecyclerViewTop() = with(binding.recyclerViewTopHeroes) {
         binding.recyclerViewTopHeroes.adapter = aboveAdapter
         layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
         addOnScrollListener(object : RecyclerView.OnScrollListener() {
@@ -95,7 +95,7 @@ class HeroesFragment : Fragment(R.layout.heroes_fragment) {
         inputMethodManager.hideSoftInputFromWindow(windowToken, 0)
     }
 
-    fun searchHero() {
+    private fun searchHero() {
         binding.etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {}
 
